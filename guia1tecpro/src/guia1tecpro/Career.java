@@ -25,7 +25,9 @@ public class Career {
 
 	public void showStudents() {
 		for(int i = 0; i < list.size() ; i++ ) {
-			System.out.println(list.get(i).getPer().getName() +" "+list.get(i).getPer().getSurname());
+			System.out.println(list.get(i).getPer().getName() +" "+list.get(i).getPer().getSurname() + "  "+
+			list.get(i).fechaInscripcion.getYear() + "/" + list.get(i).fechaInscripcion.getMonthValue() + "/" +
+			list.get(i).fechaInscripcion.getDayOfMonth());
 		}
 	}
 }

@@ -1,5 +1,9 @@
 package guia1tecpro;
 import java.time.*;
+//import java.security.MessageDigest;
+//import java.security.NoSuchAlgorithmException;
+
+
 
 public class Person {
 	
@@ -67,5 +71,4 @@ public class Person {
 		}
 		return LocalDate.now().getYear()-born.getYear();
 	}
-	
 }

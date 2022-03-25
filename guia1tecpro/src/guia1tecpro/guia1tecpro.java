@@ -2,7 +2,7 @@ package guia1tecpro;
 
 import java.time.*;
 
-public class principal {
+public class guia1tecpro{
 	static public void main(String[] args) {
 		
 		LocalDate born = LocalDate.of(2001, 8, 31);
@@ -12,7 +12,7 @@ public class principal {
 		Person nahue = new Person(name,surname,born,dni);
 		Career S_Ingeneering = new Career("Software Engineering");
 		
-		Students yo = new Students(nahue,S_Ingeneering);
+		Students yo = new Students(nahue,S_Ingeneering,LocalDate.of(2020, 11, 26));
 		
 		S_Ingeneering.addStudent(yo);
 		
