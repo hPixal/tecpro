@@ -35,7 +35,7 @@ public class Career {
 
   public void showStudents(){
     for (Integer i = 0; i < this.st.size(); i++) {
-      System.out.println(this.st.get(i).getPer()+" - "+this.st.get(i).getSignIn());
+      System.out.println(this.st.get(i).toString()+" - "+this.st.get(i).getSignIn());
     }
   }
 }

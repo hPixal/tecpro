@@ -6,12 +6,14 @@ public class Person {
   private String surname;
   private Calendar BirthDate;
   private Integer DNI;
+  private String hashedPass;
 
-  public Person(String name, String surname, Calendar BirthDate) {
+  public Person(String name, String surname, Calendar BirthDate,String pass) {
     super();
     this.name = name;
     this.surname = surname;
     this.BirthDate = BirthDate;
+    this.hashedPass = StringMD.getStringMessageDigest(pass,StringMD.SHA256);
   }
 
   public Integer getAge() {
@@ -66,4 +68,8 @@ public class Person {
     DNI = dNI;
   }
 
+  public Boolean verificate(String pass){
+    String ver = StringMD.getStringMessageDigest(pass,StringMD.SHA256);
+    return (ver == this.hashedPass);
+  }
 }

@@ -12,7 +12,7 @@ public class Student {
     this.signIn = signIn;
   }
 
-  public String getPer() {
+  public String toString(){
     return per.getName()+" "+per.getSurname();
   }
 
@@ -38,9 +38,5 @@ public class Student {
 
   public void setSignIn(Calendar signIn) {
     this.signIn = signIn;
-  }
-
-  public String toString() {
-    return per.toString() + " " + car.toString();
   }
 }

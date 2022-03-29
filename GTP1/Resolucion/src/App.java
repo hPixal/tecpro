@@ -8,7 +8,7 @@ public class App {
     b.set(Calendar.MONTH, 8);
     b.set(Calendar.DAY_OF_MONTH, 31);
 
-    Person per = new Person("Nahuel", "Gareis", b);
+    Person per = new Person("Nahuel", "Gareis", b,"holi");
     Career car = new Career("Software Engineering");
 
     b.set(Calendar.YEAR, 2019);
