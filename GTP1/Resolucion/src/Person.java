@@ -70,6 +70,8 @@ public class Person {
 
   public Boolean verificate(String pass){
     String ver = StringMD.getStringMessageDigest(pass,StringMD.SHA256);
-    return (ver == this.hashedPass);
+    System.out.println(ver);
+    System.out.println(this.hashedPass);
+    return (ver.equals(hashedPass));
   }
 }

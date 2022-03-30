@@ -23,5 +23,6 @@ public class App {
     );
 
     fich.showCareersAndStudents();
+    if(per.verificate("holi")) System.out.println("Verificado");
   }
 }
