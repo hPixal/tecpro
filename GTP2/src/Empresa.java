@@ -1,19 +1,15 @@
+import java.util.Calendar;
 import java.util.Vector;
-import java.lang.invoke.ClassSpecializer.Factory;
-import java.util.ArrayList;
 
 public class Empresa {
 
-  public String nombre;
-  public Vector<Factura> myFactura;
-  public Vector<Cliente> myCliente;
-  public Vector<Producto> myProducto;
-  public IVA myIVA;
+  private Vector<Trabajadores> Trabajadores;
 
-  
-
-
-  public void listarFacturas() {
+  public Float determinarSueldos(Calendar periodo){
+    float montoTotal = 0.f;
+    for(Trabajadores it : this.Trabajadores){
+      montoTotal += it.CacularSueldo(periodo);
+    }
+    return montoTotal;
   }
-
 }
