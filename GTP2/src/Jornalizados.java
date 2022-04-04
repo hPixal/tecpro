@@ -11,7 +11,9 @@ public class Jornalizados extends Trabajadores {
     this.myJornadas = new Vector<Jornada>();
   }
 
-  public void anadirJornada()
+  public void anadirJornada(JornalHora nJornada){
+    this.jhoras.anadirJornada(nJornada);
+  }
 
   @Override
   public Float CacularSueldo(Calendar periodo) {
