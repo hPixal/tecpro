@@ -1,4 +1,4 @@
-public abstract class Auto extends Vehiculo {
+public class Auto extends Vehiculo {
 
   public Auto(
     String marca,
@@ -17,7 +17,9 @@ public abstract class Auto extends Vehiculo {
 
   @Override
   public Float getPrecio() {
-    Float fin = this.precio + this.precio * this.pais.getArancel();
+    Float fin = this.precio;
+
+    if (pais.getName() != "Argentina") fin += this.pais.getArancel();
     return fin;
   }
 }

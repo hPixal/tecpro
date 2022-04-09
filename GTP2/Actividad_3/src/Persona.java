@@ -1,13 +1,11 @@
-public class Dueño {
+public class Persona {
 
   private String nombre;
   private String apellido;
-  private Integer telefono;
 
-  public Dueño(String nombre, String apellido, Integer telefono) {
+  public Persona(String nombre, String apellido) {
     this.nombre = nombre;
     this.apellido = apellido;
-    this.telefono = telefono;
   }
 
   public String getNombre() {
@@ -24,13 +22,5 @@ public class Dueño {
 
   public void setApellido(String apellido) {
     this.apellido = apellido;
-  }
-
-  public Integer getTelefono() {
-    return telefono;
-  }
-
-  public void setTelefono(Integer telefono) {
-    this.telefono = telefono;
   }
 }
