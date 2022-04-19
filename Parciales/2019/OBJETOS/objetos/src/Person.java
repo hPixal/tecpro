@@ -4,29 +4,37 @@ public class Person {
 
   private String name;
   private String email;
-  private Vector<Comment> comment;
+  private Vector<Comment> comments;
   private Vector<Rol> rol;
 
   public Person(String name, String email) {
     this.name = name;
     this.email = email;
-    this.comment = new Vector<Comment>();
+    this.comments = new Vector<Comment>();
     this.rol = new Vector<Rol>();
   }
 
   public Boolean hasComments() {
-    return this.comment.isEmpty();
+    return this.comments.isEmpty();
   }
 
   public Vector<Comment> getComments() {
-    return this.comment;
+    return this.comments;
+  }
+
+  public void displayComments(){
+    if(this.hasComments()){
+      for(Comment it : this.comments){
+        it.displayComment();
+      }
+    }
   }
 
   public Vector<Comment> getComments(Short stars) {
     Vector<Comment> out = new Vector<Comment>();
 
-    if (!this.comment.isEmpty()) {
-      for (Comment it : this.comment) {
+    if (!this.comments.isEmpty()) {
+      for (Comment it : this.comments) {
         if (it.compareStars(stars)) {
           out.add(it);
         }

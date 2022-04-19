@@ -1,12 +1,17 @@
-public abstract class Rol {
+public abstract class Rol extends Person {
 
-  private String name;
+  private String rolname;
 
-  public Rol(String name) {
-    this.name = name;
+  public Rol(String name, String email, String rolname) {
+    super(name, email);
+    this.rolname = rolname;
   }
 
-  public String getName() {
-    return name;
+  public String getRealName(){
+    return this.getName();
+  }
+
+  public String getRolname() {
+    return this.rolname;
   }
 }

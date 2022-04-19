@@ -18,12 +18,18 @@ public class Comment {
     return (this.stars == stars);
   }
 
-  public String getComment() {
+  public String getContent() {
     return comment;
   }
 
-  public String getRol() {
-    return this.rol.getName();
+  public void displayComment(){
+    System.out.println(this.rol.getRealName() + " has commented: ");
+    System.out.println(this.comment);
+    System.out.println("Overall qualification: "+ this.stars);  
+  }
+
+  public String getPerson() {
+    return this.rol.getRealName();
   }
 
   public void setComment(String comment) {

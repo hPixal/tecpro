@@ -4,8 +4,8 @@ public class Guest extends Rol {
 
   private Calendar birthdate;
 
-  public Guest(Calendar birthdate) {
-    super("Guest");
+  public Guest(String name, String email, Calendar birthdate) {
+    super(name, email, "Guest");
     this.birthdate = birthdate;
   }
 

@@ -1,9 +1,11 @@
+import java.util.Vector;
+
 public class Host extends Rol {
 
   private String username;
 
-  public Host(String username) {
-    super("Host");
+  public Host(String name, String email, String username) {
+    super(name, email, "Host");
     this.username = username;
   }
 

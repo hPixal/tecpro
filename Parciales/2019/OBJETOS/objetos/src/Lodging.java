@@ -40,6 +40,10 @@ public class Lodging {
     return this.name;
   }
 
+  public void showComments(){
+    this.host.getComments();
+  }
+
   public void setDirection(String direction) {
     this.direction = direction;
   }
