@@ -23,13 +23,13 @@ public class AriBNB {
   public void showSharedLodgings() {
     for (Lodging it : lodgings) {
       if (it.getType() == "Shared") {
-          System.out.println(it.getName() + it.getDirection());
+        System.out.println(it.getName() + it.getDirection());
       }
     }
   }
 
-  public void showComments(Short stars){
-    for(Person it : this.persons){
+  public void showComments(Short stars) {
+    for (Person it : this.persons) {
       it.getComments(stars);
     }
   }

@@ -22,9 +22,9 @@ public class Person {
     return this.comments;
   }
 
-  public void displayComments(){
-    if(this.hasComments()){
-      for(Comment it : this.comments){
+  public void displayComments() {
+    if (this.hasComments()) {
+      for (Comment it : this.comments) {
         it.displayComment();
       }
     }
@@ -43,7 +43,7 @@ public class Person {
     return out;
   }
 
-  public void displayComments(Short stars){
+  public void displayComments(Short stars) {
     if (!this.comments.isEmpty()) {
       for (Comment it : this.comments) {
         if (it.compareStars(stars)) {
