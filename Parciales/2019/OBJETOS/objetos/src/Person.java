@@ -40,8 +40,17 @@ public class Person {
         }
       }
     }
-
     return out;
+  }
+
+  public void displayComments(Short stars){
+    if (!this.comments.isEmpty()) {
+      for (Comment it : this.comments) {
+        if (it.compareStars(stars)) {
+          it.displayComment();
+        }
+      }
+    }
   }
 
   public String getName() {

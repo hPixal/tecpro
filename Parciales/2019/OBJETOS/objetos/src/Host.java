@@ -1,5 +1,3 @@
-import java.util.Vector;
-
 public class Host extends Rol {
 
   private String username;
