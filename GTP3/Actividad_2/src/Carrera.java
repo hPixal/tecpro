@@ -3,6 +3,7 @@ import java.util.Vector;
 public class Carrera {
     private String nombre;
     private Vector<Alumno> alumnos;
+    private Vector<Catedra> catedras;
 
     public Carrera(String nombre) {
         this.nombre = nombre;
@@ -16,6 +17,29 @@ public class Carrera {
                 cantidad++;
         }
         return cantidad;
+    }
+
+    public void anadirCatedra(Catedra catedra){
+        this.catedras.add(catedra);
+    }
+
+    public void listarAlumnosEnCatedra(Catedra catedra){
+        Catedra cat = null;
+        for(Catedra it : this.catedras){
+            if(it.checkearCatedra(catedra)) cat = it;
+        }
+        
+        if(cat!=null){
+            cat.mostrarAlumnos();
+        }
+    }
+
+    public Boolean perteneceCatedra(Catedra catedra){
+        Boolean pertence = false;
+        for(Catedra it : this.catedras){
+            if(it.checkearCatedra(catedra)) pertence = true;
+        }
+        return pertence;
     }
 
     /*

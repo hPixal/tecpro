@@ -4,5 +4,4 @@ public class Catedra {
     public Catedra(String nombre) {
         this.nombre = nombre;
     }
-    
 }

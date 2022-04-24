@@ -21,8 +21,8 @@ public class Examen {
         return catedra;
     }
 
-    public Boolean aprobo(){
-        return nota>=6;
+    public Boolean aprobo() {
+        return nota >= 6;
     }
-    
+
 }
