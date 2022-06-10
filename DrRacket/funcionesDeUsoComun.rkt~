@@ -1,9 +1,0 @@
-;FUNCIONES DE USO COMÚN
-
-;Concatenar
-
-(define concatenar ( lambda (l1 l2)
-                      (if (empty? l1 )
-                          l2
-                          (cons (car l1) (concatenar (cdr l1) l2))
-                          )))
