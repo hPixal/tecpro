@@ -1,7 +1,8 @@
-hijo(tomás, juan).
-hijo(ana, tomás).
-hijo(juan, marcos).
-hijo(alicia, juan).
+progenitor(tomás, juan).
+progenitor(ana, tomás).
+progenitor(juan, marcos).
+progenitor(alicia, juan).
+
 
 %Guía de Trabajos prácticos numero uno 
 
@@ -22,13 +23,26 @@ f(c, 2).
 
 %Ejercicio nro 2
 padre(geronimo,esteban).
+macho(geronimo). macho(esteban).
 padre(leonocido, alberto). 
+macho(leonocido). macho(alberto).
 padre(leonocido, geronimo).
+macho(geronimo).
 padre(alberto, juan). 
+macho(alberto). macho(juan).
 padre(alberto, luis).
+macho(luis).
 padre(geronimo, luisa).
+macho(geronimo).
 hermano(X,Y):- padre(Z,X), padre(Z,Y).
 nieto(A,B):- padre(C,A), padre(B,C).
+
+padre(P,H):- progenitor(P,H), macho(P).
+madre(M,H):- progenitor(M,H), hembra(M).
+abuela(A,N):-  madre(A,X), progenitor(X,N).
+abuelo(A,N):- padre(A,X), progenitor(X,N).
+tatarAbuela(A,TN):- madre(A,H1), progenitor(H1,H2), progenitor(H2,TN).
+hermanxs(P,H):- madre(M,H), madre(M,P), padre(X,H), padre(X,P),P \= H.
 
 %Ejercicion nro 3
 
