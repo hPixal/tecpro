@@ -1,3 +1,6 @@
+#!/usr/bin/racket
+#lang racket
+
 (let ((r (/ (* 7 a) b) ))  (+ r (/ (* 3 a) b) r ))
 
 (let ((p (list '(a b c))))
