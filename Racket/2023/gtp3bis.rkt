@@ -73,21 +73,12 @@
                               )
                           ))
 
-(define agrupar-r (lambda (ls aux elem presente)
-                    (if (null? ls)
-                        aux
-                        (let ((first (car ls)) (rest (cdr ls)))
-                          (if (equal? first elem )
-                              (agrupar-r rest (cons elem aux) elem presente)
-                              (if (elemntoPresente first presente)
-                                  (agrupar-r rest aux elem presente)
-                                  (list (agrupar-r rest aux elem (cons first presente))
-                                        (agrupar-r rest (cons first '()) first (cons first presente)))
-                                  )
-                              )
-                          )
-                        )
-                    ))
+
+(define agrupar-r2 (lambda (ls)))
+
+(define agrupar-r1 (lambda (ls aux)
+    
+))
 
 (define agrupar (lambda (ls)
                   (if (null? ls)

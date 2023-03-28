@@ -58,6 +58,20 @@ cons : #<procedure:cons>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ejercicio 5
+
 list genera la lista I (+ - * /), cdr de I devuelve la lista II (- * /),
 luego cdr de II devuelve la lista III (* /) y car de III devuelve *, entonces
 finalmente queda (* 5 5) = 25
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ejercicio 6
+
+( car (cdr (cdr (cdr (cdr '( a b c ​.​ x))))))
+
+(car (cdr (cdr (cdr '(a b c x)))))
+
+(car (cdr (cdr (car '((a ​.​ x) b)))))
+
+(car '(x ​.​ a))
+
+(car (cdr (cdr '(a ​.​ x))))
