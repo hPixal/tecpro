@@ -1,3 +1,4 @@
+#lang racket
 ;; Escriba la funcion factorial
 
 (define factorial (lambda (x)
@@ -182,4 +183,25 @@
 
 (define convertir(lambda (ls)
     (convertir-r ls '())
+))
+
+(define distancias-r(lambda( ls rtn )
+    (if (null? (cdr ls))
+        rtn
+        (let ((firstDot (car ls)) (secondDot (car (cdr ls))) (rest (cdr ls)))
+          (let ((x1 (car firstDot)) (x2 (car secondDot)) (y1 (cdr firstDot)) (y2 (cdr secondDot)))
+	        (let ((diffX (* (- x1 x2 ) (- x1 x2))) (diffY (* (- y1 y2) (- y1 y2))))
+	         (distancias-r rest (cons (sqrt (+ diffX diffY)) rtn))
+            )
+          )
+        )
+    )
+))
+
+
+(define distancias (lambda (ls)
+    (if (null? ls) 
+	'()
+	(distancias-r ls '())
+    )
 ))
