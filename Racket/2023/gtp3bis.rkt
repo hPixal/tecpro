@@ -172,7 +172,7 @@
             (convertir-r (cdr rest) (cons (
                 (cond 
                 [(equal? first "T") (map string->number (car rest))]
-                [(equal? first "B") (map boolToNumber (car rest))]
+                [(equal? first "B") (map symbol->number (car rest))]
                 [(equal? first "D") (map abs (car rest))]
                 [(display "NaN")]
                 )

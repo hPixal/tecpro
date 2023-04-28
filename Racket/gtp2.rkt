@@ -68,8 +68,8 @@
 ;Ejercicio 6
                     
 (define shorter (lambda ( lista1 lista2 )
-                  (let((tamano1 (lenght lista1)))
-                       (tamano2 (lenght lista2))
+                  (let((tamano1 (Length lista1)))
+                       (tamano2 (Length lista2))
                        (if (tamano1 > tamano2)
                            (tamano1)
                            (tamano2)))))

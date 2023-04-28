@@ -122,3 +122,55 @@
 ;;(obtenerMinimo '("moto" "aaa") "zzz")
 
 ;;(eliminateElem '("a" "b" "c") "b")
+
+
+;; Ejercicio 7 
+(define reverse-r(lambda (x aux)
+    (if (null? x)
+        aux
+        (reverse-r (cdr x) (cons (car x) aux))
+    )
+))
+
+(define reverse(lambda (x)
+    (if (null? x)
+        '()
+        (reverse-r x '())
+    )
+))
+
+(define fullreverse(lambda (ls)
+    (reverse (map (lambda (x) 
+        (if (list? x)
+            (fullreverse x)
+            x
+        )
+      ) ls)
+    )
+))
+
+(fullreverse '(1 (2 3 4 (4 5) (3 (5 6)) 4)))
+
+(define concatenar (lambda (l1 l2)
+    (if (null? l1)
+        l2           
+        (let ((first1 (car l1)) (rest1 (cdr l1)))
+          (if (null? rest1)    
+              (cons first1 l2)   
+              (cons first1 (concatenar q l2)))))
+))
+
+(define app2list(lambda (e1 e2)
+    (if (list? e1)
+        (if (list? e2)
+            (concatenar e1 e2)
+            (cons e2 e1)
+        )
+        (if (list? e2)
+            (if (list? e1)
+                (concatenar e2 e1)
+                (cons e1 e2)
+            )
+        )
+    )
+))
