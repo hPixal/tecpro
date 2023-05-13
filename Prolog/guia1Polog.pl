@@ -61,3 +61,7 @@ ruta(santafe, rosario).
 ruta(rosario, capital).
 ruta(rosario, mardelplata).
 ruta(capital, cordoba).
+
+% ruta(X,cordoba).
+% ruta(parana,X).
+% ruta(parana,cordoba)

@@ -1,5 +1,4 @@
 %Ejercicio 1
-
 factorial(0,1).
 factorial(N,F) :-
     N>0,
@@ -27,6 +26,8 @@ positivo([CAR|CDR],L):-  positivo(CDR,L).
 
 
 %Ejercicio 6
-
 suma_lista([],[],[]).
 suma_lista([CAR1|CDR1],[CAR2|CDR2],[L1|S]):- L1 is CAR1 + CAR2,suma_lista(CDR1,CDR2,S).
+
+%Ejercicio 7
+eliminar_dup([],)
