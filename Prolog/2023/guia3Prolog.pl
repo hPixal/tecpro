@@ -54,31 +54,57 @@ buscar(WORD,L):- dic(L2), encontrar(WORD,L2,L).
 
 %EJercicio 7 
 
-%reemplazar(elementoAReemplazar,reemplazo,numeroDeAparicion,cantidadDeVeces,Lista)
-reemplazar(_,_,_,[]).
-reemplazar(ELEM,REEM,NAP,CAV,[CAR|CDR]):- 
-    reemplazar(ELEM,REEM,NAP,CAV,CDR).
+reemplazar(_,_,_,_,[],[]).
+reemplazar(ELEM,REEM,NAP,CAV,[CAR|CDR],L):- 
+    CAR =\= ELEM,
+    reemplazar(ELEM,REEM,NAP,CAV,CDR,L2),
+    L = [CAR|L2].
 
-reemplazar(ELEM,REEM,NAP,CAV,[CAR|CDR]):- %Reemplaza sin restriccion
+reemplazar(ELEM,REEM,NAP,CAV,[CAR|CDR],L):- %Reemplaza sin restriccion
     ELEM == CAR,
     CAV == -1,
     NAP == 1,
-    reemplazar(ELEM,REEM,NAP,CAV,CDR2),
-    CDR = CDR2,
-    CAR is REEM.
+    reemplazar(ELEM,REEM,NAP,CAV,CDR,L2),
+    L = [REEM|L2].
 
-reemplazar(ELEM,REEM,NAP,_,[REM|CDR]):- %Caso pasa porque no le toca
+reemplazar(ELEM,REEM,NAP,CAV,[REEM|CDR],L):- %Caso pasa porque no le toca
     NAP >= 1,
     NAP2 is NAP-1,
-    reemplazar(ELEM,REEM,NAP2,CAV,CDR2),
-    CDR is CDR2.
+    reemplazar(ELEM,REEM,NAP2,CAV,CDR,L2),
+    L = [REEM|L2].
 
-reemplazar(ELEM,REEM,NAP,CAV,[CAR|CDR]):- %Caso reemplaza pero tiene restriccion
+reemplazar(ELEM,REEM,NAP,CAV,[CAR|CDR],L):- %Caso reemplaza pero tiene restriccion
     CAR == ELEM,
     CAV > 0,
     NAP == 1,
-    CAR =/= ELEM,
+    CAR =\= ELEM,
     CAV2 is CAV-1,
-    reemplazar(ELEM,REEM,NAP2,CAV2,CDR2),
-    CDR is CDR2.
+    reemplazar(ELEM,REEM,NAP,CAV2,CDR,L2),
+    L = [REEM|L2].
 
+%EJercicio 8
+
+%Conocimiento
+conectado(a,b).
+conectado(a,d).
+conectado(b,c).
+conectado(b,e).
+conectado(c,g).
+conectado(d,f).
+conectado(e,f).
+conectado(f,g).
+conectado(g,salida).
+
+esta_presente(ELEM,[ELEM|_]):- !.
+esta_presente(ELEM,[CAR|CDR]):-
+              ELEM \= CAR,
+              esta_presente(ELEM,CDR).
+
+salir_aux(ELEM,[ELEM]):-
+    conectado(ELEM,'salida').
+
+salir_aux(ELEM,L):-
+    conectado(ELEM,X),
+    salir_aux(X,L1),
+    not(esta_presente(ELEM,L1)),
+    L = [ELEM|L1].
