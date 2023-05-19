@@ -42,34 +42,32 @@ reina(CASX,CASY,ALFILX,ALFILY):-
     amenazaAlfil(CX,CASY,AX,ALFILY).
 
 %Ejercicio 2
-vio(Jose,['Misterio a Bordo', 'The Perfection', 'Otro día para matar','Barreras','Yo soy Sam','Inspection']).
-vio(Maria,['Quizás para siempre','A pesar de todo','La casa del Lago','Barreras']).
-vio(Pedro,['Barreras', 'Otro día para matar', 'Yo soy Sam','A pesar de todo'; ]).
-
-semejanza([],[],0).
-semejanza([],[_|CDR],COUNT):- semejanza([],CDR,COUNTR), COUNT is COUNTR-1.
-semejanza([_|CDR],[],COUNT):- semejanza(CDR,[],COUNTR), COUNT is COUNTR-1, !.
-
-semejanza([ELEM|CDR1],[ELEM|CDR2],COUNT):-
-    semejanza(CDR1,CDR2,COUNTR),
-    COUNT is COUNTR + 1, !.
-
-semejanza([CAR1|CDR1],[CAR2|CDR2],COUNT):-
-    CAR1 \= CAR2,
-    semejanza(CDR1,CDR2,COUNTR),
-    COUNT is COUNTR-1, !.
-
+vio(jose,['Misterio a Bordo', 'The Perfection', 'Otro día para matar','Barreras','Yo soy Sam','Inspection']).
+vio(maria,['Quizás para siempre','A pesar de todo','La casa del Lago','Barreras']).
+vio(pedro,['Barreras', 'Otro día para matar', 'Yo soy Sam','A pesar de todo']).
 
 esta_presente(ELEM,[ELEM|_]):- !.
 esta_presente(ELEM,[CAR|CDR]):-
               ELEM \= CAR,
               esta_presente(ELEM,CDR).
 
+coincide([],_,0).
+coincide([CAR|CDR],L2,COUNT):-
+    esta_presente(CAR,L2),
+    coincide(CDR,L2,COUNTR),
+    COUNT is COUNTR+1.
+coincide([CAR|CDR],L2,COUNT):-
+    not(esta_presente(CAR,L2)),
+    coincide(CDR,L2,COUNT).
+
 recomendar(NOM,L):- 
     vio(NOM,L1),
+    vio(NOM2,_),
+    NOM2 \= NOM,
     vio(NOM2,L2),
-    NOM2 =/= NOM,
-    semejanza(L1,L2) > 2,
+    coincide(L1,L2,COUNT),
+    COUNT > 2,
+    recomendar_aux(L1,L2,L).
 
 recomendar_aux([],_,[]).
 
@@ -81,7 +79,6 @@ recomendar_aux([CAR1|CDR1],[CAR2|CDR2],L):-
 recomendar_aux([CAR1|CDR1],[CAR2|CDR2],L):-
     esta_presente(CAR1,[CAR2|CDR2]),
     recomendar_aux(CDR1,CDR2,L).
-    
 
 %Ejercicio 3
 esta_presente(ELEM,[ELEM|_]):- !.
