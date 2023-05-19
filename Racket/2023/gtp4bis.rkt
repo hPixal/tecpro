@@ -151,26 +151,25 @@
 
 (fullreverse '(1 (2 3 4 (4 5) (3 (5 6)) 4)))
 
+;; Ejercicio 8
+
 (define concatenar (lambda (l1 l2)
     (if (null? l1)
         l2           
-        (let ((first1 (car l1)) (rest1 (cdr l1)))
-          (if (null? rest1)    
-              (cons first1 l2)   
-              (cons first1 (concatenar q l2)))))
-))
-
-(define app2list(lambda (e1 e2)
-    (if (list? e1)
-        (if (list? e2)
-            (concatenar e1 e2)
-            (cons e2 e1)
-        )
-        (if (list? e2)
-            (if (list? e1)
-                (concatenar e2 e1)
-                (cons e1 e2)
-            )
-        )
+        (cons (car l1) (concatenar (cdr l1) l2))
     )
 ))
+
+(define app2list(lambda (l1 l2)
+    (cond
+        [(and (list? l1) (list? l2)) (concatenar l1 l2)]
+        [(list? l1) (cons l2 l1)]
+        [(list? l2) (cons l1 l2)]
+        [(list l1 l2)]
+    )
+
+))
+
+(app2list '(1 2 3) '(4 5 6))
+(app2list '(2 3) 1)
+(app2list 1 '(2 3))

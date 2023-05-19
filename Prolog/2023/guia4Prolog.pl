@@ -115,6 +115,7 @@ union([CAR|CDR],C2,L):-
 diferencia([],L,L).
 diferencia(L,[],L).
 diferencia([],[],[]).
+
 diferencia([CAR1|CDR1],[CAR2|CDR2],L):-
     not(tiene_repetidos([CAR1|CDR1])),
     not(tiene_repetidos([CAR2|CDR2])),
@@ -122,6 +123,7 @@ diferencia([CAR1|CDR1],[CAR2|CDR2],L):-
     not(esta_presente(CAR2,[CAR1|CDR1])),
     diferencia(CDR1,CDR2,L1),
     L = [CAR1,CAR2|L1].
+
 diferencia([CAR1|CDR1],[CAR2|CDR2],L):-
     not(tiene_repetidos([CAR1|CDR1])),
     not(tiene_repetidos([CAR2|CDR2])),
@@ -129,6 +131,7 @@ diferencia([CAR1|CDR1],[CAR2|CDR2],L):-
     esta_presente(CAR2,[CAR1|CDR1]),
     diferencia(CDR1,CDR2,L1),
     L = [CAR1|L1].
+
 diferencia([CAR1|CDR1],[CAR2|CDR2],L):-
     not(tiene_repetidos([CAR1|CDR1])),
     not(tiene_repetidos([CAR2|CDR2])),
@@ -136,6 +139,7 @@ diferencia([CAR1|CDR1],[CAR2|CDR2],L):-
     not(esta_presente(CAR2,[CAR1|CDR1])),
     diferencia(CDR1,CDR2,L1),
     L = [CAR2|L1].
+
 diferencia([CAR1|CDR1],[CAR2|CDR2],L):-
     not(tiene_repetidos([CAR1|CDR1])),
     not(tiene_repetidos([CAR2|CDR2])),
