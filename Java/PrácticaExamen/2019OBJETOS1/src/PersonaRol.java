@@ -1,8 +1,6 @@
 public abstract class PersonaRol {
     private Persona persona;
 
-    
-
     public PersonaRol(Persona persona) {
         this.persona = persona;
     }
