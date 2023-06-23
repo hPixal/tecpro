@@ -13,51 +13,52 @@
 
 %Necesito una que cuente la cantidad de numeros que hay
 
-get_length([],0).
-get_length([_|CDR],COUNT):-
-    get_length(CDR,COUNT1),
-    COUNT is COUNT1+1.
+get_length([], 0).
+get_length([_|CDR], COUNT):-
+    get_length(CDR, COUNT1),
+    COUNT is COUNT1 + 1.
 
 check_length(CHARS):-
-    get_length(CHARS,X),
+    get_length(CHARS, X),
     X > 7, X < 13.
 
-check_mayus([_|CDR]):-
-    check_mayus(CDR).
+check_mayus([]):-false,!.
+check_mayus([_|CDR]):- check_mayus(CDR).
 check_mayus([CAR|_]):-
-    char_type(CAR,alpha),
-    char_type(CAR,upper),!.
+    char_type(CAR, alpha),
+    char_type(CAR, upper),!.
 
-tiene_numero([]).
+tiene_numero([]) :- false.
 tiene_numero([CAR|_]):-
-    char_type(CAR,digit),!.
+    char_type(CAR, digit).
 tiene_numero([_|CDR]):-
     tiene_numero(CDR).
 
-tiene_secuencia([CAR1,CAR2,CAR3|_]):-
-	char_type(CAR1,digit),
-	number_codes(NUM1,CAR1),
-    char_type(CAR2,digit),
-	number_codes(NUM2,CAR2),
-    char_type(CAR3,digit),
-	number_codes(NUM3,CAR3),
-    NUM2 == NUM1+1,
-    NUM3 == NUM2+1,!.
-tiene_secuencia([CAR1,CAR2,CAR3|_]):-
-	char_type(CAR1,digit),
-	number_codes(NUM1,CAR1),
-    char_type(CAR2,digit),
-	number_codes(NUM2,CAR2),
-    char_type(CAR3,digit),
-	number_codes(NUM3,CAR3),
-    NUM2 == NUM1-1,
-    NUM3 == NUM2-1,!.
-tiene_secuencia([_,_,_|CDR]):- tiene_secuencia(CDR).
+tiene_secuencia([CAR1, CAR2, CAR3|_]):-
+    char_type(CAR1, digit),
+    char_type(CAR2, digit),
+    char_type(CAR3, digit),
+    number_chars(NUM1, [CAR1]),
+    number_chars(NUM2, [CAR2]),
+    number_chars(NUM3, [CAR3]),
+    X2 is NUM1 + 1,X3 is NUM2 + 1,
+    NUM2 == X2 , NUM3 == X3 .
+tiene_secuencia([CAR1, CAR2, CAR3|_]):-
+    char_type(CAR1, digit),
+    char_type(CAR2, digit),
+    char_type(CAR3, digit),
+    number_chars(NUM1, [CAR1]),
+    number_chars(NUM2, [CAR2]),
+    number_chars(NUM3, [CAR3]),
+    X2 is NUM1 - 1,X3 is NUM2 - 1,
+    NUM2 == X2 , NUM3 == X3 .
+tiene_secuencia([_|CDR]):-
+    tiene_secuencia(CDR).
 
 passValidator(WORD):-
     string(WORD),
-    atom_chars(WORD,CHARLIST),
+    string_chars(WORD, CHARLIST),
     tiene_numero(CHARLIST),
     not(tiene_secuencia(CHARLIST)),
     check_mayus(CHARLIST),
-    check_length(CHARLIST),!.
+    check_length(CHARLIST).
