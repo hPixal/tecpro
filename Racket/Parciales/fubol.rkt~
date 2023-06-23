@@ -1,0 +1,114 @@
+#lang racket
+
+#|
+    cosas que quiero hacer
+    + tener guita
+    + una funcion de salida '(Argentina . 5) => "Argentina"
+    + una funcion que dado un pais y un partido me devuelva si jugó en ese partido
+    + una funcion que dado un pais cuente las veces que este pais jugó 
+    + una funcion que obtenga todos los paises en listas
+    + una funcion que checkee si un pais ya está en la lista
+    + una funcion que dada una lista de paises retorna esta misma pero con la cantidad de veces que jugo
+    + una funcion que dada la lista de pesos y la lista de paises los unifique
+|#
+
+(define obtenerPais(lambda (elem)
+    (if ((not (null? elem)))
+        (car elem)
+        '()
+    )
+))
+
+(define jugo(lambda (pais partido)
+    (let ((pais1 (obtenerPais (car partido))) (pais2 (car(cdr partido))))
+        (if (equal? pais1 pais)
+            #t
+            (if (equal? pais2 pais)
+                #t
+                #f
+            )
+        )
+    )
+))
+
+(define cuantoJugo(lambda (pais partidos)
+    (if (empty? partidos)
+        0
+        (if (jugo pais (car partidos))
+            (+ (cuantoJugo pais (cdr partidos)) 1)
+            (cuantoJugo pais (cdr partidos))
+        )
+    )
+))
+
+(define elementoPresente(lambda (elem lista)
+    (if (empty? list)
+        #f
+        (if (equal? elem (car lista))
+            #t
+            (elementoPresente elem (cdr lista))
+        )
+    )
+))
+
+(define listaPaises(lambda (partidos)
+    (if (empty? partidos)
+        '()
+        (let ((pais1 (obtenerPais (car (car partidos)))) 
+        (pais2 (obtenerPais (car (cdr (car partidos))))))
+            (let ((newList (listarPaises (cdr partidos))))
+                (if (elementoPresente pais1 newList)
+                    (if (elementoPresente pais2 newList)
+                        (cons pais2 (cons pais1 newList))
+                        (cons pais1 newList)
+                    )
+                    (if (elementoPresente pais2 newList)
+                        (cons pais2 newList)
+                        newList
+                    )
+                )
+            )
+        )
+    )
+))
+
+(listaPaises '( ( (Argentina . 5) (Brasil . 0 ) )
+( (Argentina . 3) (Bolivia . 2) )
+( (Argentina . 2) (Chile . 1) )
+( (Bolivia . 1) (Paraguay . 0) )
+( (Brasil . 1) (Venezuela . 0) )
+( (Colombia . 0) (Ecuador . 2) )
+( (Brasil . 2) (Ecuador . 1) ) 
+))
+
+
+(define paisYpartidos(lambda (pais partidos)
+    (if (empty? partidos)
+        (cons pais  0)
+        (cons pais (cuantoJugo pais partidos))
+    )
+))
+
+(define fubol-aux(lambda (paises partidos)
+    (if (null? pais)
+        '()
+        (cons (paisYpartidos (car paises) partidos) (fubol-aux (cdr paises) partidos))
+    )
+))
+
+(define fubol(lambda (partidos)
+    (fubol-aux (listaPaises partidos) partidos)
+))
+
+#|
+(fubol '( ( (Argentina . 5) (Brasil . 0 ) )
+( (Argentina . 3) (Bolivia . 2) )
+( (Argentina . 2) (Chile . 1) )
+( (Bolivia . 1) (Paraguay . 0) )
+( (Brasil . 1) (Venezuela . 0) )
+( (Colombia . 0) (Ecuador . 2) )
+( (Brasil . 2) (Ecuador . 1) ) 
+) )
+
+
+|#
